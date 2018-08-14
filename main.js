@@ -1,6 +1,7 @@
 var inputCount;
 var sampleData = [];
-
+var arbitraryNumberList = [];
+var globalSamplePrefix;
 
 function formulaOne() {
 
@@ -17,11 +18,17 @@ function generateInputs() {
     var askBox = document.getElementById("preInput");
     var inputNumber = document.getElementById("inputNumber").value;
     var inputGenerateBox = document.getElementById("inputs");
+    var samplePrefix = document.getElementById("samplePrefix").value;
+    
+    if (startingSampleNumber == "") {startingSampleNumber = "0"};
 
-    if (startingSampleNumber == "" || inputNumber == "") {
+    if (samplePrefix == "" || inputNumber == "") {
         alert("You are missing something! Please try again.");
         return;
     }
+    samplePrefix = parseInt(samplePrefix);
+    globalSamplePrefix = samplePrefix;
+
     startingSampleNumber = parseInt(startingSampleNumber);
 
     inputGenerateBox.innerHTML = "<h3><i>Data</i></h3>";
@@ -32,7 +39,7 @@ function generateInputs() {
 
     for (var i = 0; i < inputNumber; i++) {
         thisSampleNumber = i + startingSampleNumber;
-        newContent = "<div id='input"+i+"' class='card card-block bg-faded' style='margin: 2px; padding:2px; width:400px;'><b>"+thisSampleNumber+"</b><div id='input"+i+"' class='card card-block bg-faded' style='margin: 8px; padding:4px;'><label for='description"+i+"'>Project Description</label><input placeholder='Description' style='' type='text' class='form-control' id='description"+i+"'><input placeholder='Area' style='' type='text' class='form-control' id='area"+i+"'><br><label for='startTime"+i+"'>Time (not exceeding 4 hours)</label><input placeholder='Start (Example: 530am)' style='' type='datetime-local' class='form-control' id='startTime"+i+"'><input placeholder='End (Example: 600pm)' style='' type='datetime-local' class='form-control' id='endTime"+i+"'><br><label for='startCalibration"+i+"'>Calibration (lpm)</label><input placeholder='Pre' style='width:60px' type='text' class='form-control' id='preCalibration"+i+"'><input placeholder='Post' style='width:60px' type='text' class='form-control' id='postCalibration"+i+"'><br><label for='volumeCollected"+i+"'>Volume (liters)</label><input placeholder='Example: 325' style='' type='text' class='form-control' id='volumeCollected"+i+"'><br><label for='fibersFound"+i+"'>Fibers</label><input placeholder='' style='width:60px' type='text' class='form-control' value='0' id='fibersFound"+i+"'>/<input placeholder='100' style='width:60px' type='text' class='form-control' value='100' id='fiberField"+i+"'></div></div>";
+        newContent = "<div id='input"+i+"' class='card card-block bg-faded' style='margin: 2px; padding:2px; width:400px;'><b>"+samplePrefix+" - <div id='iterSampleValue"+i+"'>"+thisSampleNumber +"</div></b><div id='input"+i+"' class='card card-block bg-faded' style='margin: 8px; padding:4px;'><label for='description"+i+"'>Project Description</label><input placeholder='Description' style='' type='text' class='form-control' id='description"+i+"'><input placeholder='Area' style='' type='text' class='form-control' id='area"+i+"'><br><label for='startTime"+i+"'>Time (not exceeding 4 hours)</label><input placeholder='Start (Example: 530am)' style='' type='datetime-local' class='form-control' id='startTime"+i+"'><input placeholder='End (Example: 600pm)' style='' type='datetime-local' class='form-control' id='endTime"+i+"'><br><label for='startCalibration"+i+"'>Calibration (lpm)</label><input placeholder='Pre' style='width:60px' type='text' class='form-control' id='preCalibration"+i+"'><input placeholder='Post' style='width:60px' type='text' class='form-control' id='postCalibration"+i+"'><br><label for='volumeCollected"+i+"'>Volume (liters)</label><input placeholder='Example: 325' style='' type='text' class='form-control' id='volumeCollected"+i+"'><br><label for='fibersFound"+i+"'>Fibers</label><input placeholder='' style='width:60px' type='text' class='form-control' value='0' id='fibersFound"+i+"'>/<input placeholder='100' style='width:60px' type='text' class='form-control' value='100' id='fiberField"+i+"'></div></div>";
         inputGenerateBox.innerHTML += newContent;
     }
     //deletes box for pre inputs.
@@ -47,6 +54,8 @@ function generateInputs() {
 function submit() {
 
     var dom = document;
+
+    var thisSampleNumber;
 
     var description;
     var area;
@@ -64,6 +73,7 @@ function submit() {
 
     for (var i = 0; i < inputCount; i++) {
 
+        thisSampleNumber = dom.getElementById("iterSampleValue" + i).innerHTML;
         description = dom.getElementById("description" + i).value;
         area = dom.getElementById("area" + i).value;
         startTime = dom.getElementById("startTime" + i).value;
@@ -81,7 +91,8 @@ function submit() {
         }
 
         sampleData.push(
-            {
+            {   
+                sampleNumber: thisSampleNumber,
                 description: description,
                 area: area,
                 startTime: startTime,
