@@ -10,13 +10,24 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+
     <script src="./main.js"></script>
+    <script src="./constants.js"></script>
     <link rel="stylesheet" href="./stylesheet.css">
 </head>
 
 <body>
     <div class="row">
         <div class="col-3 mx-auto">
+            <div id="headerInfo" class="card card-block bg-faded" style="margin: 2px; margin-left: -150px; padding:8px; width:600px;">
+                    <label>New Project</label>
+                    <input placeholder="Project Number" style="" type="text" class="form-control" id="projectNumber" required>
+                    <input placeholder="Project Name" style="" type="text" class="form-control" id="projectName" required>
+                    <input placeholder="Client" style="" type="text" class="form-control" id="client" required>
+                    <input placeholder="Date" style="" type="date" class="form-control" id="date" required>
+                    <input placeholder="Starting sample number" style="" type="text" class="form-control" id="startingSampleNumber" required>
+            </div>
 
             <div id="preInput">
                 <div class="form-group">
@@ -44,16 +55,17 @@
                         <input placeholder="Post" style="width:60px" type="text" class="form-control" id="postCalibration0">
                         <br>
 
-                        <label for="volume0">Volume (liters)</label>
-                        <input placeholder="Example: 325" style="" type="text" class="form-control" id="volume0">
+                        <label for="volumeCollected0">Volume (liters)</label>
+                        <input placeholder="Example: 325" style="" type="text" class="form-control" id="volumeCollected0">
                         <br>
 
-                        <label for="fibers0">Fibers/100</label>
-                        <input placeholder="Example: 6" style="" type="text" class="form-control" id="fibers0">
+                        <label for="fibersFound0">Fibers/100</label>
+                        <input placeholder="Example: 6" style="" type="text" class="form-control" id="fibersFound0">
                     </div>
                 </div> -->
             </div>
-
+            <div id="submit">
+            </div>
         </div>
     </div>
 </body>
