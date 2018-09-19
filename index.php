@@ -1,5 +1,29 @@
-<html>
+<?php
+/**
+ * Created by Iain Monciref.
+ * User: iainmoncrief
+ * Date: 8/14/18
+ * Time: 1:34 PM
+ */
 
+// function getIpAddress() {
+//     if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+//         $ipAddresses = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+//         return trim(end($ipAddresses));
+//     }
+//     else {
+//         return $_SERVER['REMOTE_ADDR'];
+//     }
+// }
+
+// if ($_COOKIE['privatekey'] == file_get_contents("../privatekey.txt")) {
+//     echo getIpAddress();
+//     die(" 🚫You donot have access to this page.🚫");
+// }
+// //else
+//     if (true) { //debug
+// ?>
+<html>
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
@@ -35,8 +59,10 @@
 
             <div id="preInput">
                 <div class="form-group">
-                    <label for="usr">Enter number of data inputs: </label>
-                    <input style="width:50px" type="text" class="form-control" id="inputNumber">
+                    <form class="form-inline">
+                        <label for="usr">Enter number of data inputs: </label>
+                        <input style="width:50px" type="text" class="form-control" id="inputNumber">
+                    </form>
                 </div>
                 <button type="button" class="btn btn-info" onClick="generateInputs()">Generate Inputs</button>
             </div>
@@ -72,5 +98,15 @@
             </div>
         </div>
     </div>
+    <script> let privateKey = "<?php echo file_get_contents("../privateKey.txt")?>";</script>
+    <script>
+        <?php
+            echo "const HeaderModel = '".file_get_contents("./Models/Header_Image_Data.txt")."';";
+            echo "const FooterModel = '".file_get_contents("./Models/Footer_Image_Data.txt")."';";
+        ?>
+    </script>
 </body>
 </html>
+<?php
+
+    ?>

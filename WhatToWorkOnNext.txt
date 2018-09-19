@@ -1,0 +1,3 @@
+- data encoding
+- equations
+- PDF output

@@ -3,14 +3,6 @@ var sampleData = [];
 var arbitraryNumberList = [];
 var globalSamplePrefix;
 
-function formulaOne() {
-
-}
-
-function formulaTwo() {
-
-}
-
 function generateInputs() {
     //alert("A project's time may not excede 24 hours!");
 
@@ -31,7 +23,7 @@ function generateInputs() {
 
     startingSampleNumber = parseInt(startingSampleNumber);
 
-    inputGenerateBox.innerHTML = "<h3><i>Data</i></h3>";
+    inputGenerateBox.innerHTML = "<h2><i>Data</i></h2>";
 
     var newContent = "";
     var thisSampleNumber;
