@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d3af2fd-d616-4fb6-b0f6-7746247f203a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/randPass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Buffer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Buffer.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PDFGen.js" beforeDir="false" afterPath="$PROJECT_DIR$/PDFGen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WhatToWorkOnNext.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WhatToWorkOnNext.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,14 +49,14 @@
         <counts>
           <entry key="dummy" value="20" />
           <entry key="html" value="1" />
-          <entry key="js" value="124" />
+          <entry key="js" value="189" />
           <entry key="php" value="2543" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JavaScript" value="124" />
+          <entry key="JavaScript" value="189" />
           <entry key="PHP" value="2543" />
           <entry key="PLAIN_TEXT" value="20" />
         </counts>
@@ -145,8 +138,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PDFGen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+            <state relative-caret-position="279">
+              <caret line="100" column="13" lean-forward="true" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -260,12 +253,12 @@
       <workItem from="1535581389846" duration="5058000" />
       <workItem from="1535674518258" duration="342000" />
       <workItem from="1535767187400" duration="7000" />
-      <workItem from="1537334987007" duration="3020000" />
+      <workItem from="1537334987007" duration="3602000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19686000" />
+    <option name="totallyTimeSpent" value="20268000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="957" extended-state="0" />
@@ -385,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PDFGen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+        <state relative-caret-position="279">
+          <caret line="100" column="13" lean-forward="true" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
         </state>
       </provider>
     </entry>

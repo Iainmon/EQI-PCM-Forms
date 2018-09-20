@@ -74,49 +74,81 @@ PDF.start = function (input) {
     doc = new jsPDF();
 
     doc.addImage(HeaderModel, 'JPEG', 0, 0, 217, 101); //Adding Header.
-    doc.addImage(FooterModel, 'JPEG', 0, 287, 225, 8); //Adding Footer.
 
-    for (var i = 0; i < input.samples.length; i++) {
+    let dataBlock = {
+        reportNumber: "EQI-18-2003",
+        clientId: "EQI-18-2003-01",
+        description: "Back side of house, patio celing wall bathroom closet.",
+        labId: 92743,
+        fibers: 1.5,
+        fields: 100,
+        airVolume: 468,
+        reportingLimit: 0.006,
+        fiberConcentration: true
+    };
 
+    var boxes = 0;
+    let iterTimes = input.samples.length;
+    let expectedPages = Math.round(((iterTimes - 6) / 9) + 1);
+    var data;
+    for (var i = 0; i < iterTimes; i++) {
+        data = input.samples[i];
+        if (i >= 6) {
+            if ((i - 6) % 9 == 0 || i == 6) {
+                addFooter(expectedPages, data.reportNumber);
+                doc.addPage();
+                boxes = 0;
+            }
+        }
+        createDataBox(boxes, data);
+        boxes++;
+        if (i == iterTimes - 1) addFooter(expectedPages, data.reportNumber);
     }
+
 };
 
-PDF.createDataBox = function (offset) {
-    let startY = 100;
+PDF.createDataBox = function (boxesOnPage, input) {
+    var startY;
     let startX = 10;
     var boxSize = 30;
     let dataSpacingOffset = 10;
     let lineSpacingOffest = 5;
     let boldData = true;
 
+    startY = (doc.internal.getNumberOfPages() == 1)? 100 : 10;
 
-    offset = (offset < 1) ? startY : (offset * boxSize) + startY;
+    let offset = (boxesOnPage == 0) ? startY : (boxesOnPage * boxSize) + startY;
     let textOffset = offset + 8;
 
     fontReset(11);
-    doc.text(startX, textOffset, "EQI-18-2003");
+    doc.text(startX, textOffset, input.clientId);
 
-    var splitTitle = doc.splitTextToSize("Inseide Work Area/ 12th floor/outside Lani/concreet", 40);
+    var splitTitle = doc.splitTextToSize(input.description, 40);
     doc.text(startX, textOffset + 8, splitTitle);
 
     fontReset(11, boldData);
 
-    doc.text(startX + 38, textOffset + dataSpacingOffset, "92743");
+    doc.text(startX + 38, textOffset + dataSpacingOffset, String(input.labId));
 
-    doc.text(startX + 62, textOffset + dataSpacingOffset, "1.5");
+    doc.text(startX + 62, textOffset + dataSpacingOffset, String(input.fibers));
 
-    doc.text(startX + 74, textOffset + dataSpacingOffset, "100");
+    doc.text(startX + 74, textOffset + dataSpacingOffset, String(input.fields));
 
-    doc.text(startX + 97, textOffset + dataSpacingOffset, "468");
+    doc.text(startX + 97, textOffset + dataSpacingOffset, String(input.airVolume));
 
-    doc.text(startX + 128, textOffset + dataSpacingOffset, "0.006");
+    doc.text(startX + 128, textOffset + dataSpacingOffset, String(input.reportingLimit));
 
-    doc.text(startX + 165, textOffset + dataSpacingOffset, ">");
-
-    doc.text(startX + 170, textOffset + dataSpacingOffset, "0.006");
+    doc.text(startX + 163, textOffset + dataSpacingOffset, `${input.fiberConcentration ? '>' : '<'}  0.006`);
 
     doc.setLineWidth(0.5);
     doc.line(startX - 5, offset + boxSize, 216 - startX, offset + boxSize);
+};
+
+PDF.addFooter = function (totalPages, reportNumber) {
+    doc.addImage(FooterModel, 'JPEG', 0, 286, 225, 8); //Adding Footer.
+    fontReset(9, true);
+    doc.text(10, 291, String(reportNumber));
+    doc.text(182, 291, `Page ${doc.internal.getNumberOfPages()} of ${totalPages}`);
 };
 
 PDF.save = function () {
