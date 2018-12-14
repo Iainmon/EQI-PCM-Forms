@@ -104,7 +104,6 @@ PDF.start = function (input) {
         boxes++;
         if (i == iterTimes - 1) addFooter(expectedPages, data.reportNumber);
     }
-
 };
 
 PDF.createDataBox = function (boxesOnPage, input) {
@@ -138,7 +137,7 @@ PDF.createDataBox = function (boxesOnPage, input) {
 
     doc.text(startX + 128, textOffset + dataSpacingOffset, String(input.reportingLimit));
 
-    doc.text(startX + 163, textOffset + dataSpacingOffset, `${input.fiberConcentration ? '>' : '<'}  0.006`);
+    doc.text(startX + 163, textOffset + dataSpacingOffset, `${input.fiberConcentration ? '>' : '<'}  ${input.reportingLimit}`);
 
     doc.setLineWidth(0.5);
     doc.line(startX - 5, offset + boxSize, 216 - startX, offset + boxSize);
